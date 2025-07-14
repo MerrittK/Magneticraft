@@ -107,7 +107,7 @@ public class InventoryComponent implements IInventory {
         inventory = new ItemStack[this.getSizeInventory()];
         for (int i = 0; i < tagList.tagCount(); ++i) {
             NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
-            byte slot = tagCompound.getByte("Slot");
+            short slot = tagCompound.getShort("Slot");
             if (slot >= 0 && slot < inventory.length) {
                 setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(tagCompound));
             }
@@ -120,7 +120,7 @@ public class InventoryComponent implements IInventory {
         for (int currentIndex = 0; currentIndex < inventory.length; ++currentIndex) {
             if (inventory[currentIndex] != null) {
                 NBTTagCompound nbt = new NBTTagCompound();
-                nbt.setByte("Slot", (byte) currentIndex);
+                nbt.setShort("Slot", (short) currentIndex);
                 inventory[currentIndex].writeToNBT(nbt);
                 list.appendTag(nbt);
             }

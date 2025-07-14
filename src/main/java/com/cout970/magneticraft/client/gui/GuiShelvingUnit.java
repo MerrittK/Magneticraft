@@ -93,7 +93,7 @@ public class GuiShelvingUnit extends GuiBasic {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
+
     @Override
     protected void drawGuiContainerBackgroundLayer(float fps, int mx, int my) {
         int allowed = (int) Math.ceil(((float) shelfContainer.shelf.getCrateCount()) / TileShelvingUnit.SHELF_CRATES) - 1;

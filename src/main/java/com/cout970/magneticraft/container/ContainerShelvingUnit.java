@@ -173,11 +173,11 @@ public class ContainerShelvingUnit extends ContainerBasic {
                     .collect(Collectors.toList());
         }
         if (mode == 2) {
-            currentSlots = (List<SlotShelvingUnit>) inventorySlots.stream()
-                    .filter(s -> s instanceof SlotShelvingUnit)
-                    .filter(s -> (((SlotShelvingUnit) s).invNum == curInv) && MgUtils.matchesPattern(((SlotShelvingUnit) s).getStack(), filter))
-                    .collect(Collectors.toList());
-
-        }
+        currentSlots = (List<SlotShelvingUnit>) inventorySlots.stream()
+                .filter(s -> s instanceof SlotShelvingUnit) // Filters out to all SlotShelvingUnits.
+                .map(s -> (SlotShelvingUnit) s) // Maps list to a `List<SlotShelvingUnit>`.
+                .filter(s -> (s.invNum == curInv) && MgUtils.matchesPattern(s.getStack(), filter)) // Does something??
+                .collect(Collectors.toList()); // Collects to list.
+    	}
     }
 }
